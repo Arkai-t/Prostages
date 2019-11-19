@@ -10,21 +10,22 @@ class ProstageController extends AbstractController
 {
     public function index()
     {
-        return new Response('<html><body><h1>Bienvenue sur la page d\'accueil de Prostages</h1></body></html>');
+        return $this->render('prostage/index.html.twig');
     }
 
     public function entreprises()
     {
-        return new Response('<html><body><h1>Cette page affichera la liste des entreprises proposant un stage</h1></body></html>');
+        return $this->render('prostage/affichageEntreprises.html.twig');
     }
 
     public function formations()
     {
-        return new Response('<html><body><h1>Cette page affichera la liste des formations de l\'IUT</h1></body></html>');
+        return $this->render('prostage/affichageFormations.html.twig');
     }
 
     public function stages($id)
     {
-        return new Response('<html><body><h1>Cette page affichera le descriptif du stage ayant pour identifiant '.$id.'</h1></body></html>');
+        return $this->render('prostage/affichageStages.html.twig',
+        ['idStages' => $id]);
     }
 }
