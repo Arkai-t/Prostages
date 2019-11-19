@@ -11,5 +11,5 @@ prostageFormations:
     controller: App\Controller\ProstageController::formations
 
 prostageStages:
-    path: /stages
+    path: /stages/{id}
     controller: App\Controller\ProstageController::stages
