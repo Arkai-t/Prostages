@@ -1,7 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
 <h1>Bienvenue sur la page d'accueil de Prostage</h1>
 
 <ul>
     <li>
-        <a href="{{ path('prostageStages',{id:5})}}" >Stage</a>
+        <a href="{{ path('prostageStages',{id:5})}}" >Stage 1</a>
+    </li>
+    <li>
+        <a href="{{ path('prostageStages',{id:228})}}" >Stage 2</a>
+    </li>
+    <li>
+        <a href="{{ path('prostageStages',{id:768})}}" >Stage 3</a>
     </li>
 </ul>
+
+{% endblock %}
