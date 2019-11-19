@@ -9,8 +9,21 @@ class ProstageController extends AbstractController
 {
     public function index()
     {
-        return $this->render('prostage/index.html.twig', [
-            'controller_name' => 'ProstageController',
-        ]);
+        return $this->render('prostage/index.html.twig');
+    }
+
+    public function entreprises()
+    {
+
+    }
+
+    public function formations()
+    {
+        
+    }
+
+    public function stages()
+    {
+        
     }
 }
