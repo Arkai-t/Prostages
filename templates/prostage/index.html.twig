@@ -1,19 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block contenu %}
 
 <h1>Bienvenue sur la page d'accueil de Prostage</h1>
 
-<ul>
-    <li>
-        <a href="{{ path('prostageStages',{id:5})}}" >Stage 1</a>
-    </li>
-    <li>
-        <a href="{{ path('prostageStages',{id:228})}}" >Stage 2</a>
-    </li>
-    <li>
-        <a href="{{ path('prostageStages',{id:768})}}" >Stage 3</a>
-    </li>
-</ul>
+<label for="choix-formation">Choisir une formation :</label>
+
+<select name="from" id="choix-formation">
+    <option value=""></option>
+    <option value="dut">DUT Informatique</option>
+    <option value="lic">Licence</option>
+</select>
+
+<label for="choix-entreprise">Choisir une entreprise :</label>
+
+<select name="entrep" id="choix-entreprise">
+    <option value=""></option>
+    <option value="1">Entreprise 1</option>
+    <option value="2">Entreprise 2</option>
+</select>
 
 {% endblock %}
