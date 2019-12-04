@@ -27,14 +27,20 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                      {% block boutonAccueil %}
+                      <a class="nav-link" href="{{path('prostageAccueil')}}">Accueil</a>
+                      {% endblock %}
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/entreprises">Entreprises</a>
+                      {% block boutonEntreprises %}
+                      <a class="nav-link" href="{{path('prostageEntreprises')}}" title="Stages par entreprises">Entreprises</a>
+                      {% endblock %}
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="/formations">Formations</a>
+                      {% block boutonFormations %}
+                      <a class="nav-link" href="{{path('prostageFormations')}}" title="Stages par formation">Formations</a>
+                      {% endblock %}
                     </li>
                   </ul>
                 </div>
@@ -46,8 +52,8 @@
         {% block contenu %}
         {% endblock %}
         {% block footer %}
-        <footer class="page-footer font-small blue">
-          <div class="footer-copyright text-center font-small">Designed by L. VINCENT </div>
+        <footer class="footer fixed-bottom bg-secondary text-white">
+          <div class="text-center">Designed by L. VINCENT </div>
         </footer>
         {% endblock %}
         {% block javascripts %}
