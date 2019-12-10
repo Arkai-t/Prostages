@@ -29,7 +29,7 @@
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                       {% block boutonAccueil %}
-                      <a class="nav-link" href="{{path('prostageAccueil')}}">Accueil</a>
+                      <a class="nav-link" href="{{path('prostageAccueil')}}" title="Tous les stages">Accueil</a>
                       {% endblock %}
                     </li>
                     <li class="nav-item">
@@ -52,10 +52,12 @@
             </div>
           </div>
         {% endblock %}
-        {% block contenu %}
+        {% block contenu %}        
         {% endblock %}
+        <br>
         {% block footer %}
         <footer class="footer fixed-bottom bg-secondary text-white">
+        </div>
           <div class="text-center">Designed by L. VINCENT </div>
         </footer>
         {% endblock %}
