@@ -35,15 +35,18 @@ class AppFixtures extends Fixture
         }
 
         //Definition des Entreprises
-        $nbEntreprises =5;
+        $nbEntreprises =10;
         for ($i=0; $i<$nbEntreprises ; $i++) { 
             //Création d'une entreprise
             $entreprise = new Entreprise();
             $entreprise->setNom($faker->company);
             $entreprise->setAdresse($faker->address);
             $entreprise->setActivité($faker->sentence($nbWords =100, $variableNbWords = true));
-            $nomEntreprise = $entreprise->getNom();      
-            $entreprise->setSite($faker->regexify('http\:\/\/'.$nomEntreprise.'\.'.$faker->tld));
+
+            //Préparation du nom de l'entreprise
+            $nomEntreprise = str_replace(' ','_',$entreprise->getNom()); //Enlève les espace au nom d'entreprise
+            $nomEntreprise = str_replace('.','',$nomEntreprise); //Enlève les points 
+            $entreprise->setSite(strtolower($faker->regexify('http\:\/\/'.$nomEntreprise.'\.'.$faker->tld)));
 
             $manager->persist($entreprise);
 
@@ -53,7 +56,7 @@ class AppFixtures extends Fixture
                 //Création d'un stage
                 $stage = new Stage();
                 $stage->setTitre($faker->sentence($nbWords =15, $variableNbWords = true));
-                $stage->setmail($faker->companyEmail);
+                $stage->setmail(strtolower($faker->regexify($faker->firstName.'\.'.$faker->lastName.'@'.$nomEntreprise.'\.com')));
                 $stage->setDescription($faker->realText($maxNbChars = 200, $indesSize = 2));
                 $stage->setEntreprise($entreprise);
 
