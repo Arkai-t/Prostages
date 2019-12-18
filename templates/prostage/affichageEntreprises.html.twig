@@ -6,115 +6,18 @@
 
 <html>
     <body>
-        <h1>Cette page affichera la liste des entreprises proposant un stage</h1>
-        <div class="container">
-    <div class="row">
-        <div class="col">
-            <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                <th scope="col">Stage</th>
-                <th scope="col">Entreprise</th>
-                <th scope="col">Dates</th>
-                <th scope="col">Formations</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+        <br>
+        <h3>Liste des entreprises proposant un stage</h3>
+        <br>
+        <ul class="list-group">
+        {% for entrepriseCourante in entreprises %}
+            <li class = "list-group-item">
+                <a href='{{path('prostageEntreprise',{id:entrepriseCourante.id})}}' class="text-decoration-none">
+                {{entrepriseCourante.nom}}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>   
     </body>
 </html>
 

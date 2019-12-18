@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
         $dutInfo->setNomComplet("DUT Informatique");
 
         $lpProg = new Formation();
-        $lpProg->setNom("Lp Prog");
+        $lpProg->setNom("LP Prog");
         $lpProg->setNomComplet("License professionnel Programmation avancée");
 
         $lpNum = new Formation();
@@ -35,7 +35,7 @@ class AppFixtures extends Fixture
         }
 
         //Definition des Entreprises
-        $nbEntreprises =10;
+        $nbEntreprises =25;
         for ($i=0; $i<$nbEntreprises ; $i++) { 
             //Création d'une entreprise
             $entreprise = new Entreprise();
@@ -51,7 +51,7 @@ class AppFixtures extends Fixture
             $manager->persist($entreprise);
 
             //Definition des stages associé à l'entreprise
-            $nbStages = $faker->numberBetween($min=1, $max=3);
+            $nbStages = $faker->numberBetween($min=1, $max=5);
             for ($y=0; $y<$nbStages; $y++) { 
                 //Création d'un stage
                 $stage = new Stage();

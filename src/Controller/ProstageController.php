@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Stage;
+use App\Entity\Entreprise;
+use App\Entity\Formation;
 
 class ProstageController extends AbstractController
 {
@@ -20,12 +22,38 @@ class ProstageController extends AbstractController
 
     public function entreprises()
     {
-        return $this->render('prostage/affichageEntreprises.html.twig');
+        $repoEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+        $entreprises = $repoEntreprise->findAll();
+
+        return $this->render('prostage/affichageEntreprises.html.twig',['entreprises'=>$entreprises]);
+    }
+
+    public function entreprise($id)
+    {
+        $repoEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+        $entreprise = $repoEntreprise->find($id);
+
+        return $this->render('prostage/affichageEntreprise.html.twig',['entreprise' => $entreprise]);
     }
 
     public function formations()
     {
-        return $this->render('prostage/affichageFormations.html.twig');
+        $repoFormation = $this->getDoctrine()->getRepository(Formation::class);
+
+        $formations = $repoFormation->findAll();
+
+        return $this->render('prostage/affichageFormations.html.twig',['formations' => $formations]);
+    }
+
+    public function formation($id)
+    {
+        $repoFormation = $this->getDoctrine()->getRepository(Formation::class);
+
+        $formation = $repoFormation->find($id);
+
+        return $this->render('prostage/affichageFormation.html.twig',['formation' => $formation]);
     }
 
     public function stage($id)
@@ -34,6 +62,6 @@ class ProstageController extends AbstractController
 
         $stage = $repoStage->find($id);
 
-        return $this->render('prostage/affichageStages.html.twig',['stage' => $stage]);
+        return $this->render('prostage/affichageStage.html.twig',['stage' => $stage]);
     }
 }

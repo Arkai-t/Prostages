@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+
+<html>
+    <body>
+        <h1>Stage pour {{formation.nomComplet}}</h1>
+        {% for stageCourant in formation.stages %}
+        <li class = "list-group-item">
+            <a href='{{path('prostageStages',{id:stageCourant.id})}}' class="text-decoration-none">
+                {{stageCourant.titre}}
+            </a>
+        </li>
+        {% endfor %}
+    </body>
+</html>
+
+{% endblock %}
