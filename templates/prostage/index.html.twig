@@ -7,113 +7,15 @@
 {% block contenu %}
 <h3>Ci-dessous la liste des stages présents sur Prostages</h3><br><br>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                <th scope="col">Stage</th>
-                <th scope="col">Entreprise</th>
-                <th scope="col">Dates</th>
-                <th scope="col">Formations</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement PHP</th>
-                <td>CGI</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-                <tr>
-                <th>Développement C++</th>
-                <td>Total</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>L3</td>
-                </tr>
-                <tr>
-                <th>3</th>
-                <td>Larry</td>
-                <td>12/04/20 au 20/06/20</td>
-                <td>DUT</td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+<ul class="list-group">
+
+    {% for stageCourant in stages %}
+    <li class = "list-group-item">
+        <a href='{{path('prostageStages',{id:stageCourant.id})}}' class="text-decoration-none">
+            {{stageCourant.titre}}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

@@ -4,7 +4,23 @@
 
 <html>
     <body>
-        <h1>Cette page affichera le descriptif du stage ayant pour identifiant {{idStages}}</h1>
+        <h1>Stage de {{stage.titre}}</h1>
+
+        <div class="card-body">
+            <h5>Description</h5>
+            <p>{{stage.description}}</p>
+            <br><br>
+            <p> Ce stage s'adresse aux personnes titulaires d'un :<p>
+            <ul>
+                {% for formationCourante in stage.formations %}
+                <li>{{formationCourante.nom}}</li>
+                {% endfor %}
+            </ul>
+            <h5>Contact de {{stage.entreprise.nom}}</h5>
+            <p>{{stage.mail}}</p>
+            <p>{{stage.entreprise.adresse}}</p>
+            <a href={{stage.entreprise.site}}>Site</a>
+        </div>
     </body>
 </html>
 

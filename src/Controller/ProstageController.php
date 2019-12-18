@@ -5,12 +5,17 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\Stage;
 
 class ProstageController extends AbstractController
 {
     public function index()
     {
-        return $this->render('prostage/index.html.twig');
+        $repoStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        $stages = $repoStage->findAll();
+
+        return $this->render('prostage/index.html.twig',['stages'=>$stages]);
     }
 
     public function entreprises()
@@ -23,9 +28,12 @@ class ProstageController extends AbstractController
         return $this->render('prostage/affichageFormations.html.twig');
     }
 
-    public function stages($id)
+    public function stage($id)
     {
-        return $this->render('prostage/affichageStages.html.twig',
-        ['idStages' => $id]);
+        $repoStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        $stage = $repoStage->find($id);
+
+        return $this->render('prostage/affichageStages.html.twig',['stage' => $stage]);
     }
 }

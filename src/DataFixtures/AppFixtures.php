@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
             $entreprise = new Entreprise();
             $entreprise->setNom($faker->company);
             $entreprise->setAdresse($faker->address);
-            $entreprise->setActivité($faker->sentence($nbWords =100, $variableNbWords = true));
+            $entreprise->setActivité($faker->jobTitle);
 
             //Préparation du nom de l'entreprise
             $nomEntreprise = str_replace(' ','_',$entreprise->getNom()); //Enlève les espace au nom d'entreprise
@@ -50,14 +50,14 @@ class AppFixtures extends Fixture
 
             $manager->persist($entreprise);
 
-            //Definition des stages
+            //Definition des stages associé à l'entreprise
             $nbStages = $faker->numberBetween($min=1, $max=3);
             for ($y=0; $y<$nbStages; $y++) { 
                 //Création d'un stage
                 $stage = new Stage();
-                $stage->setTitre($faker->sentence($nbWords =15, $variableNbWords = true));
+                $stage->setTitre($entreprise->getActivité());
                 $stage->setmail(strtolower($faker->regexify(str_replace('É','é',$faker->firstName).'\.'.$faker->lastName.'@'.$nomEntreprise.'\.com')));
-                $stage->setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
+                $stage->setDescription($faker->realText($maxNbChars = 500, $indexSize = 2));
                 $stage->setEntreprise($entreprise);
 
                 //Ajout des formations au stage
