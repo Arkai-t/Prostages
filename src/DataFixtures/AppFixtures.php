@@ -25,8 +25,8 @@ class AppFixtures extends Fixture
         $lpProg->setNomComplet("License professionnel Programmation avancée");
 
         $lpNum = new Formation();
-        $lpNum->setNom("Lp Num");
-        $lpNum->setNomComplet("License professionnel Métiers du Numérique");
+        $lpNum->setNom("DU TIC");
+        $lpNum->setNomComplet("Diplome Universitaire des Technologies de l'Information et de la Communication");
 
         $tabTypeFormation = array($dutInfo, $lpNum, $lpProg); //Tableau des formations
 
@@ -56,20 +56,57 @@ class AppFixtures extends Fixture
                 //Création d'un stage
                 $stage = new Stage();
                 $stage->setTitre($faker->sentence($nbWords =15, $variableNbWords = true));
-                $stage->setmail(strtolower($faker->regexify($faker->firstName.'\.'.$faker->lastName.'@'.$nomEntreprise.'\.com')));
-                $stage->setDescription($faker->realText($maxNbChars = 200, $indesSize = 2));
+                $stage->setmail(strtolower($faker->regexify(str_replace('É','é',$faker->firstName).'\.'.$faker->lastName.'@'.$nomEntreprise.'\.com')));
+                $stage->setDescription($faker->realText($maxNbChars = 200, $indexSize = 2));
                 $stage->setEntreprise($entreprise);
 
-                //Ajout d'une formation au stage
-                $numTypeFormation = $faker->numberBetween($min=0, $max=2);
-                $stage->addFormation($tabTypeFormation[$numTypeFormation]);
+                //Ajout des formations au stage
+                $nbFormations = $faker->numberBetween($min=1,$max=3);
+
+                switch ($nbFormations) {
+                    case '1':
+                        $numTypeFormation = $faker->numberBetween($min=0, $max=2);
+                        $stage->addFormation($tabTypeFormation[$numTypeFormation]);
+                        //Ajout du stage à la formation
+                        $tabTypeFormation[$numTypeFormation]->addStage($stage);
+                        $manager->persist($tabTypeFormation[$numTypeFormation]);
+                        break;
+                    
+                    case '2':
+                        $numTypeFormation1 = $faker->numberBetween($min=0, $max=2);
+                        $numTypeFormation2 = $faker->numberBetween($min=0, $max=2);
+                        $stage->addFormation($tabTypeFormation[$numTypeFormation1]);
+                        //Ajout du stage à la formation1
+                        $tabTypeFormation[$numTypeFormation1]->addStage($stage);
+                        $manager->persist($tabTypeFormation[$numTypeFormation1]);
+
+                        if ($numTypeFormation1!=$numTypeFormation2) {
+                            //Ajout du stage à la formation2 si les 2 formations tirées sont différentes
+                            $stage->addFormation($tabTypeFormation[$numTypeFormation2]);
+                            $manager->persist($tabTypeFormation[$numTypeFormation2]);
+                        }
+                        break;
+
+                    default:    // 3 formations
+                        // Formation 1
+                        $stage->addFormation($tabTypeFormation[0]);
+                        $tabTypeFormation[0]->addStage($stage);
+                        $manager->persist($tabTypeFormation[0]);
+
+                        // Formation 2
+                        $stage->addFormation($tabTypeFormation[1]);
+                        $tabTypeFormation[1]->addStage($stage);
+                        $manager->persist($tabTypeFormation[1]);
+
+                        // Formation 3
+                        $stage->addFormation($tabTypeFormation[2]);
+                        $tabTypeFormation[2]->addStage($stage);
+                        $manager->persist($tabTypeFormation[2]);
+                        break;
+                }
 
                 $manager->persist($stage);
                 
-                //Ajout du stage à la formation
-                $tabTypeFormation[$numTypeFormation]->addStage($stage);
-                $manager->persist($tabTypeFormation[$numTypeFormation]);
-
                 //Ajout du stage à l'entreprise
                 $entreprise->addEntreprise($stage);//La méthode n'a pas le bon nom (Mauvaise génération)
                 $manager->persist($entreprise);
