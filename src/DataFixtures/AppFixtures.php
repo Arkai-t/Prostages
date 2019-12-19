@@ -35,7 +35,7 @@ class AppFixtures extends Fixture
         }
 
         //Definition des Entreprises
-        $nbEntreprises =25;
+        $nbEntreprises =50;
         for ($i=0; $i<$nbEntreprises ; $i++) { 
             //Création d'une entreprise
             $entreprise = new Entreprise();
@@ -57,11 +57,11 @@ class AppFixtures extends Fixture
                 $stage = new Stage();
                 $stage->setTitre($entreprise->getActivité());
                 $stage->setmail(strtolower($faker->regexify(str_replace('É','é',$faker->firstName).'\.'.$faker->lastName.'@'.$nomEntreprise.'\.com')));
-                $stage->setDescription($faker->realText($maxNbChars = 500, $indexSize = 2));
+                $stage->setDescription($faker->realText($maxNbChars = $faker->numberBetween($min = 600, $max = 1200), $indexSize = 1));
                 $stage->setEntreprise($entreprise);
 
                 //Ajout des formations au stage
-                $nbFormations = $faker->numberBetween($min=1,$max=3);
+                $nbFormations = $faker->numberBetween($min=1,$max=5);
 
                 switch ($nbFormations) {
                     case '1':
