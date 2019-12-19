@@ -19,6 +19,12 @@
                     <small>
                         <p class="mb-1">Activité : <i>{{entrepriseCourante.activité}}</i></p>
                     </small>
+                    <!--Calculer le nombre de stages proposés par l'entreprise-->
+                    {% set nbStages = 0 %}   
+                    {% for stageCourant in entrepriseCourante.entreprises %} <!--Problème de nommage dans la BD-->
+                        {% set nbStages = loop.length %}
+                    {% endfor %}
+                    <p class="badge badge-pill badge-dark">Nombre de stages : {{ nbStages }}</p>
                 </a>
             </li>
         {% endfor %}

@@ -15,7 +15,13 @@
                 <a href='{{path('prostageFormation',{id:formationCourante.id})}}' class="text-body">
                     <div class="list-group d-flex justify-content-between">                       
                         {{formationCourante.nom}}                     
-                    </div>   
+                    </div>
+                    <!--Calculer le nombre de stages dans la formation-->
+                    {% set nbStages = 0 %}   
+                    {% for stageCourant in formationCourante.stages %}
+                        {% set nbStages = loop.length %}
+                    {% endfor %}
+                    <p class="badge badge-pill badge-dark">Nombre de stages : {{ nbStages }}</p>
                 </a>
             </li>
         {% endfor %}
