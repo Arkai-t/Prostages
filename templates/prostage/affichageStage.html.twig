@@ -4,8 +4,7 @@
 
 <html>
     <body>
-        <h1>Stage de {{stage.titre}}</h1>
-
+        <h3>Stage de {{stage.titre}}</h3>
         <div class="card-body">
             <h5>Description</h5>
             <p>{{stage.description}}</p>
@@ -17,9 +16,11 @@
                 {% endfor %}
             </ul>
             <h5>Contact de {{stage.entreprise.nom}}</h5>
-            <p>{{stage.mail}}</p>
-            <p>{{stage.entreprise.adresse}}</p>
-            <a href={{stage.entreprise.site}}>Site</a>
+            <ul>
+                <li>{{stage.mail}}</li>
+                <li>{{stage.entreprise.adresse}}</li>
+                <li><a href={{stage.entreprise.site}} class="text-decoration-none">Site de l'entreprise</a></li>
+            </ul>
         </div>
     </body>
 </html>

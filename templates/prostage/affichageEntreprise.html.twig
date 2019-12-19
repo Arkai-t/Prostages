@@ -4,7 +4,7 @@
 
 <html>
     <body>
-        <h1>Stage de {{entreprise.nom}}</h1>
+        <h3>Stage de {{entreprise.nom}}</h3>
         {% for stageCourant in entreprise.entreprises %} <!--problème de nom-->
         <li class = "list-group-item">
             <a href='{{path('prostageStages',{id:stageCourant.id})}}' class="text-decoration-none">

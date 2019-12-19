@@ -9,15 +9,17 @@
         <br>
         <h3>Liste des formations</h3>
         <br>
-        <ul class="list-group">
+        <div class="list-group">
         {% for formationCourante in formations %}
             <li class = "list-group-item">
-                <a href='{{path('prostageFormation',{id:formationCourante.id})}}' class="text-decoration-none">
-                {{formationCourante.nom}}
+                <a href='{{path('prostageFormation',{id:formationCourante.id})}}' class="text-body">
+                    <div class="list-group d-flex justify-content-between">                       
+                        {{formationCourante.nom}}                     
+                    </div>   
                 </a>
             </li>
         {% endfor %}
-        </ul>
+        </div>
     </body>
 </html>
 
