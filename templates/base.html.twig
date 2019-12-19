@@ -17,7 +17,7 @@
     </head>
     <body>
         {% block menu %}
-          <div class="container-fluid">
+          <div class="container-fluid" id="enHaut">
             <div class="row">
               <div class="col-12">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,9 +57,11 @@
         {% endblock %}
         <br>
         {% block footer %}
-          <footer class="footer fixed-bottom bg-secondary text-white">
-          </div>
-            <div class="text-center">Designed by L. VINCENT </div>
+          <footer class="footer fixed-bottom bg-secondary">
+            <a href="#enHaut" class="text-white text-decoration-none">
+              <div class="text-center">Retourner en haut </div>
+              <div class="text-center"><small>Designed by L. VINCENT</small></div>
+            </a>
           </footer>
         {% endblock %}
         {% block javascripts %}

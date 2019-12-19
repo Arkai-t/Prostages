@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block contenu %}
-
 <html>
     <body>
         <h3>Stage de {{stage.titre}}</h3>
@@ -24,5 +23,9 @@
         </div>
     </body>
 </html>
-
+{% endblock %}
+{% block footer %}
+    <footer class="footer fixed-bottom bg-secondary">
+        <div class="text-center text-white"><small>Designed by L. VINCENT</small></div>
+    </footer>
 {% endblock %}
