@@ -10,8 +10,13 @@
             <a href='{{path('prostageStages',{id:stageCourant.id})}}' class="text-body">
                 <h5>{{stageCourant.titre}}</h5>
                 <small>
-                    Formations : 
                     {% for formationCourante in stageCourant.formations %}
+                        {% if loop.first and loop.length == 1 %}                            
+                            Formation : 
+                        {% endif %}
+                        {% if loop.first and loop.length != 1 %}
+                            Formations : 
+                        {% endif %}
                         {% if loop.last %}
                             {{ formationCourante.nom }}.
                         {% else %}
