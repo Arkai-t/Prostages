@@ -36,6 +36,25 @@ class EntrepriseRepository extends ServiceEntityRepository
     }
     */
 
+     /**
+      * @return Entreprise[] Returns an array of Entreprise objects
+      */
+    public function findAll()
+    {
+        //Récupération du gestionnaire d'entité
+        $entityManager = $this->getEntityManager();
+
+        //Construction de la requête
+        $requete = $entityManager->createQuery(
+            'SELECT e, s
+             FROM App\Entity\Entreprise e
+             JOIN e.entreprises s'
+        ); //Problème de nom de la jointure
+  
+        //Execution de la requête
+        return $requete->execute();
+    }
+
     /*
     public function findOneBySomeField($value): ?Entreprise
     {

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <h3>Création d'une nouvelle entreprise :</h3>
+    <div class="row">
+        <div class="col py-3 px-lg-5">
+        {{ form_start(vueFormulaireEntreprise) }}
+            <div>
+                {{ form_label (vueFormulaireEntreprise.nom) }}
+                <br>
+                {{ form_widget (vueFormulaireEntreprise.nom) }}
+            </div>
+            <div>
+                {{ form_label (vueFormulaireEntreprise.adresse) }}
+                <br>
+                {{ form_widget (vueFormulaireEntreprise.adresse) }}
+            </div>
+            <div>
+                {{ form_label (vueFormulaireEntreprise.activite) }}
+                <br>
+                {{ form_widget (vueFormulaireEntreprise.activite) }}
+            </div>
+            <div>
+                {{ form_label (vueFormulaireEntreprise.site) }}
+                <br>
+                {{ form_widget (vueFormulaireEntreprise.site) }}
+            </div>
+            <br>
+            <button type="submit" class="btn btn-outline-dark"> Créer </button>
+        {{ form_end(vueFormulaireEntreprise) }}
+        </div>
+    </div>
+{% endblock %}

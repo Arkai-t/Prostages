@@ -5,6 +5,7 @@
 {% block contenu %}
 <html>
     <body>
+        <br>
         <h3>Liste des entreprises proposant un stage</h3>
         <br>
         <div class="list-group">
@@ -15,7 +16,7 @@
                         <h5>{{entrepriseCourante.nom}}</h5>                      
                     </div>   
                     <small>
-                        <p class="mb-1">Activité : <i>{{entrepriseCourante.activité}}</i></p>
+                        <p class="mb-1">Activité : <i>{{entrepriseCourante.activite}}</i></p>
                     </small>
                     <!--Calculer le nombre de stages proposés par l'entreprise-->
                     {% set nbStages = 0 %}   
@@ -27,6 +28,9 @@
             </li>
         {% endfor %}
         </div>   
+        <br>
+        <p>Il manque une entreprise ?</p><a href='{{path('prostageAjoutEntreprise')}}' class="text-decoration-none">Ajoutez la !</a>
+        <br>
     </body>
 </html>
 {% endblock %}

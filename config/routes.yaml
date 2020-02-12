@@ -21,3 +21,11 @@ prostageFormation:
 prostageStages:
     path: /stages/{id}
     controller: App\Controller\ProstageController::stage
+
+prostageAjoutEntreprise:
+    path: /entreprise/new
+    controller: App\Controller\ProstageController::ajoutEntreprise
+
+prostageMoficationEntreprise:
+    path: /entreprise/update/{id}
+    controller: App\Controller\ProstageController::modificationEntreprise

@@ -7,10 +7,8 @@
         <br>
         <h3>Stage pour {{formation.nomComplet}}</h3>
         <br>
-        {% for stageCourant in formation.stages %}
-        {% endfor %}
         <div class="list-group">
-        {% for stageCourant in formation.stages %}
+        {% for stageCourant in stages %}
             <li class = "list-group-item">
                 <a href='{{path('prostageStages',{id:stageCourant.id})}}' class="text-body">
                     <div class="list-group">                       
@@ -18,7 +16,7 @@
                     </div>   
                     <small>
                         <p class="mb-1">Entreprise : <i>{{stageCourant.entreprise.nom}}</i></p>
-                        <p class="mb-1">Activité : <i>{{stageCourant.entreprise.activité}}</i></p>
+                        <p class="mb-1">Activité : <i>{{stageCourant.entreprise.activite}}</i></p>
                     </small>
                 </a>
             </li>

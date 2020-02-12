@@ -36,6 +36,64 @@ class StageRepository extends ServiceEntityRepository
     }
     */
 
+    /**
+      * @return Stage[] Returns an array of Stage objects
+      */
+    
+    public function findByEntreprise($nom)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.entreprise = :val')
+            ->setParameter('val', $nom)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+      * @return Stage[] Returns an array of Stage objects
+      */
+    public function findByFormation($formation)
+    {
+        //Récupération du gestionnaire d'entité
+        $entityManager = $this->getEntityManager();
+
+        //Construction de la requête
+        $requete = $entityManager->createQuery(
+            'SELECT s, e
+             FROM App\Entity\Stage s
+             JOIN s.formations f
+             JOIN s.entreprise e
+             WHERE f = :formation'
+        );
+        
+        //Attribution de la valeur des paramètres injectés dans la requête
+        $requete->setParameter('formation', $formation);
+
+        //Execution de la requête
+        return $requete->execute();    
+    }
+
+    /**
+      * @return Stage[] Returns an array of Stage objects
+      */
+    
+      public function findAll()
+      {
+        //Récupération du gestionnaire d'entité
+        $entityManager = $this->getEntityManager();
+
+        //Construction de la requête
+        $requete = $entityManager->createQuery(
+            'SELECT s, e
+             FROM App\Entity\Stage s
+             JOIN s.entreprise e'
+        );
+
+        //Execution de la requête
+        return $requete->execute();
+      }
+
     /*
     public function findOneBySomeField($value): ?Stage
     {
