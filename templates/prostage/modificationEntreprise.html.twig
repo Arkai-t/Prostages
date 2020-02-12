@@ -3,7 +3,6 @@
 {% block contenu %}
     <h3>Création d'une nouvelle entreprise :</h3>
     <div class="row">
-        <div class="col py-3 px-lg-5">
         {{ form_start(vueFormulaireEntreprise) }}
             <div>
                 {{ form_label (vueFormulaireEntreprise.nom) }}
@@ -32,6 +31,5 @@
             <br>
             <button type="submit" class="btn btn-outline-dark"> Modifier entreprise </button>
         {{ form_end(vueFormulaireEntreprise) }}
-        </div>
     </div>
 {% endblock %}

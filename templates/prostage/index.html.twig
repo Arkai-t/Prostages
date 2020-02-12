@@ -5,21 +5,21 @@
 {% endblock %}                    
 
 {% block contenu %}
-<h3>Ci-dessous la liste des stages présents sur Prostages</h3><br>
+    <h3>Ci-dessous la liste des stages présents sur Prostages</h3><br>
 
-<div class="list-group">
+    <div class="list-group">
 
-    {% for stageCourant in stages %}
-    <li class = "list-group-item">
-        <a href='{{path('prostageStages',{id:stageCourant.id})}}' class="text-body">
-            <div class="list-group">
-                <p class="font-weight-bold">{{stageCourant.titre}}</p>
-            </div>
-            <small>
-                <p class="mb-1">Entreprise : <i>{{stageCourant.entreprise.nom}}</i></p>
-            </small>
-        </a>
-    </li>
-    {% endfor %}
-</div>
+        {% for stageCourant in stages %}
+        <li class = "list-group-item">
+            <a href='{{path('prostageStages',{id:stageCourant.id})}}' class="text-body">
+                <div class="list-group">
+                    <p class="font-weight-bold">{{stageCourant.titre}}</p>
+                </div>
+                <small>
+                    <p class="mb-1">Entreprise : <i>{{stageCourant.entreprise.nom}}</i></p>
+                </small>
+            </a>
+        </li>
+        {% endfor %}
+    </div>
 {% endblock %}
