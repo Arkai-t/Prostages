@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EntrepriseType extends AbstractType
 {
@@ -15,9 +16,9 @@ class EntrepriseType extends AbstractType
     {
         $builder
             -> add('nom', TextType::class)
-            -> add('adresse', TextType::class)
-            -> add('activite', TextType::class)
-            -> add('site', UrlType::class)
+            -> add('adresse', TextareaType::class)
+            -> add('activite', TextareaType::class, ['label' => 'Activite principale'])
+            -> add('site', UrlType::class, ['label' => 'Site web'])
         ;
     }
 
