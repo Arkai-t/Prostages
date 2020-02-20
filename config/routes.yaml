@@ -29,3 +29,7 @@ prostageAjoutEntreprise:
 prostageMoficationEntreprise:
     path: /entreprise/update/{id}
     controller: App\Controller\ProstageController::modificationEntreprise
+
+prostageAjoutStage:
+    path: /stage/new
+    controller: App\Controller\ProstageController::ajoutStage

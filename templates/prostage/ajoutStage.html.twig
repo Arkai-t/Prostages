@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <h3>Création d'un nouveau stage :</h3>
+    <div class="row">
+        {{ form_start (vueFormulaireStage) }}
+            <div>
+                {{ form_label (vueFormulaireStage.titre) }}
+                <br>
+                {{ form_widget (vueFormulaireStage.titre) }}
+            </div>
+            <div>
+                {{ form_label (vueFormulaireStage.mail) }}
+                <br>
+                {{ form_widget (vueFormulaireStage.mail) }}
+            </div>
+            <div>
+                {{ form_label (vueFormulaireStage.description) }}
+                <br>
+                {{ form_widget (vueFormulaireStage.description) }}
+            </div>
+            <div>
+                {{ form_label (vueFormulaireStage.entreprise) }}
+                <br>
+                {{ form_widget (vueFormulaireStage.entreprise) }}
+            </div>
+            <div>
+                {{ form_label (vueFormulaireStage.formations) }}
+                <br>
+                {{ form_widget (vueFormulaireStage.formations) }}
+            </div>
+            <br>
+            <button type="submit" class="btn btn-outline-dark"> Créer </button>
+        {{ form_end(vueFormulaireStage) }}
+    </div>
+{% endblock %}

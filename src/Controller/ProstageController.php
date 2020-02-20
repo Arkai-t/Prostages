@@ -14,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Form\EntrepriseType;
+use App\Form\StageType;
 
 class ProstageController extends AbstractController
 {
@@ -61,12 +63,7 @@ class ProstageController extends AbstractController
     {
         $entreprise = new Entreprise();
 
-        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                      -> add('nom', TextType::class)
-                                      -> add('adresse', TextType::class)
-                                      -> add('activite', TextType::class)
-                                      -> add('site', UrlType::class)
-                                      -> getForm();
+        $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);
 
         $formulaireEntreprise->handleRequest($requetteHttp);
 
@@ -83,12 +80,7 @@ class ProstageController extends AbstractController
 
     public function modificationEntreprise(Request $requetteHttp, ObjectManager $manager, Entreprise $entreprise)
     {
-        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                      -> add('nom', TextType::class)
-                                      -> add('adresse', TextType::class)
-                                      -> add('activite', TextType::class)
-                                      -> add('site', UrlType::class)
-                                      -> getForm();
+        $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);
 
         $formulaireEntreprise->handleRequest($requetteHttp);
 
@@ -101,5 +93,23 @@ class ProstageController extends AbstractController
         }
 
         return $this->render('prostage/modificationEntreprise.html.twig', ['vueFormulaireEntreprise' => $formulaireEntreprise->createView()]);
+    }
+
+    public function ajoutStage(Request $requetteHttp, ObjectManager $manager)
+    {
+        $stage = new Stage();
+
+        $formulaireStage = $this -> createForm(StageType::class, $stage);
+
+        $formulaireStage->handleRequest($requetteHttp);
+
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid())
+        {
+            $manager->persist($stage);
+            $manager->flush();
+
+            return $this->redirectToRoute('prostageAccueil');
+        }
+        return $this->render('prostage/ajoutStage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView()]);
     }
 }
