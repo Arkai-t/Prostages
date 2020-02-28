@@ -23,13 +23,13 @@ prostageStages:
     controller: App\Controller\ProstageController::stage
 
 prostageAjoutEntreprise:
-    path: /entreprise/new
+    path: admin/entreprise/new
     controller: App\Controller\ProstageController::ajoutEntreprise
 
 prostageMoficationEntreprise:
-    path: /entreprise/update/{id}
+    path: admin/entreprise/update/{id}
     controller: App\Controller\ProstageController::modificationEntreprise
 
 prostageAjoutStage:
-    path: /stage/new
+    path: user/stage/new
     controller: App\Controller\ProstageController::ajoutStage
