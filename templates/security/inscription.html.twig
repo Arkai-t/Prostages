@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <h3>Nouveau utilisateur :</h3>
+    <div class="row">
+        {{ form_start (vueformulaireUser) }}
+            <div>
+                {{ form_row (vueformulaireUser.nom) }}
+            </div>
+            <div>
+                {{ form_row (vueformulaireUser.prenom) }}
+            </div>
+            <div>
+                {{ form_row (vueformulaireUser.email) }}
+            </div>
+            <div>
+                {{ form_row (vueformulaireUser.password) }}
+            </div>
+            <br>
+            <button type="submit" class="btn btn-outline-dark"> S'incrire </button>
+        {{ form_end (vueformulaireUser) }}
+    </div>
+{% endblock %}

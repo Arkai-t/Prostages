@@ -33,3 +33,14 @@ prostageMoficationEntreprise:
 prostageAjoutStage:
     path: user/stage/new
     controller: App\Controller\ProstageController::ajoutStage
+
+app_logout:
+    path: /logout
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_inscription:
+    path: /inscription
+    controller: App\Controller\SecurityController::inscription 
