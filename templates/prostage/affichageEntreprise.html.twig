@@ -28,7 +28,9 @@
         </li>
         {% endfor %}
         <br>
-        <p>Les informations ne correspondent pas ? <a href='{{path('prostageMoficationEntreprise',{id:entreprise.id})}}' class="text-decoration-none">Modifiez les !</a></p>
+        {% if is_granted('ROLE_ADMIN') %}                      
+            <p>Les informations ne correspondent pas ? <a href='{{path('prostageMoficationEntreprise',{id:entreprise.id})}}' class="text-decoration-none">Modifiez les !</a></p>
+        {% endif %}        
     </body>
 </html>
 

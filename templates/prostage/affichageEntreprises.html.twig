@@ -29,7 +29,9 @@
         {% endfor %}
         </div>   
         <br>
-        <p>Il manque une entreprise ? <a href='{{path('prostageAjoutEntreprise')}}' class="text-decoration-none">Ajoutez la !</a></p>
+        {% if is_granted('ROLE_ADMIN') %}                      
+            <p>Il manque une entreprise ? <a href='{{path('prostageAjoutEntreprise')}}' class="text-decoration-none">Ajoutez la !</a></p>
+        {% endif %}         
     </body>
 </html>
 {% endblock %}
