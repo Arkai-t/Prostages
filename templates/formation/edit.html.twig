@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Formation{% endblock %}
+
+{% block contenu %}
+    <h1>Modifier formation</h1>
+
+    {{ include('formation/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <br>
+    {{ include('formation/_delete_form.html.twig') }}      
+    <br><br>
+    <a class="text-decoration-none" href="{{ path('formation_index') }}">Retour à la liste des formations</a>
+{% endblock %}

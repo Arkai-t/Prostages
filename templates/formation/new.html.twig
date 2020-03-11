@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Formation{% endblock %}
+
+{% block contenu %}
+    <h1>Créer une nouvelle Formation</h1>
+
+    {{ include('formation/_form.html.twig') }}
+    <br>
+    <a class="text-decoration-none" href="{{ path('formation_index') }}">Retour à la liste des formations</a>
+{% endblock %}

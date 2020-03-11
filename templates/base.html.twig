@@ -43,17 +43,29 @@
                         {% endblock %}
                       </li>
                       <li class="nav-item">
+                        {% if is_granted('ROLE_ADMIN') %}
+                        {% block boutonAdminFormation %}
+                          <a class="nav-link" href="{{path('formation_index')}}">Administration formations</a>
+                        {% endblock %}
+                        {% endif %}
+                      </li>
+                      <li class="nav-item">
                         <a class="btn btn-outline-light" href="https://github.com/Arkait53/Prostages" title="Lien vers le GitHub">Il est caché !</a>
                       </li>
                     </ul>
-                    <ul class="navbar-nav ml-auto">
-                      </li class="nav-item">
-                        {% if is_granted('ROLE_USER') %}                      
+                    <ul class="navbar-nav ml-auto">                      
+                      {% if is_granted('ROLE_USER') %}
+                        <li class="navbar-text">
+                          <a class="badge badge-dark text-white">{{ app.user.nom }} {{ app.user.prenom }}</a>                          
+                        </li>
+                        <li class="nav-item">
                           <a class="nav-link" href="{{path('app_logout')}}" title="Déconnexion">Déconnexion</a>
-                        {% else %}
+                        </li>
+                      {% else %}
+                        <li class="nav-item">
                           <a class="nav-link" href="{{path('app_login')}}" title="Connexion">Connexion</a>
-                        {% endif %}
-                      <li>
+                        </li>
+                      {% endif %}                      
                     </ul>
                   </div>
                 </nav>

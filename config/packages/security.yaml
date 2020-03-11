@@ -34,6 +34,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/formationAdmin, roles: ROLE_ADMIN }
         - { path: ^/user, roles: [ROLE_ADMIN, ROLE_USER] }
     
     encoders:

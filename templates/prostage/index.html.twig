@@ -7,7 +7,7 @@
 {% block contenu %}
     <h3>Ci-dessous la liste des stages présents sur Prostages</h3><br>
     {% if is_granted('ROLE_USER') %}                      
-        <p>Vous proposez un stage ? <a href='{{path('prostageAjoutStage')}}' class="text-decoration-none">Ajoute le !</a></p>
+        <p>Vous proposez un stage ? <a href='{{path('prostageAjoutStage')}}' class="text-decoration-none">Ajoutez le !</a></p>
     {% endif %}    
     <br>
     <div class="list-group">

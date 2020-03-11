@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+{% block boutonAdminFormation %}
+    <a class="nav-link active" href="{{path('formation_index')}}">Administration formations</a>
+    {% endblock %}
+{% block contenu %}
+    <h1>Formation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Nom complet</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+                <td>{{ formation.nom }}</td>
+                <td>{{ formation.nomComplet }}</td>
+                <td>
+                    <a class="badge badge-pill badge-dark" href="{{ path('formation_show', {'id': formation.id}) }}">Voir</a> /
+                    <a class="badge badge-pill badge-dark" href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas de formations trouvées</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('formation_new') }}">Créer formation</a>
+{% endblock %}
