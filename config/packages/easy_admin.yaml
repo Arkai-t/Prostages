@@ -1,0 +1,7 @@
+easy_admin:
+    entities:
+        # List the entity class name you want to manage
+        - App\Entity\Stage
+        - App\Entity\Formation
+        - App\Entity\Entreprise
+        - App\Entity\User
