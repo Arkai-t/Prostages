@@ -1,7 +1,49 @@
 easy_admin:
+    site_name: 'ProStage'
     entities:
-        # List the entity class name you want to manage
-        - App\Entity\Stage
-        - App\Entity\Formation
-        - App\Entity\Entreprise
-        - App\Entity\User
+      Stage:
+        class: App\Entity\Stage
+        form:
+          fields: ['titre', 'description', { property: 'mail', label: 'Mail de contact', help: 'Ce mail vous servira à recevoir les demandes de stages'}, 'entreprise', formations]
+        list:
+          fields: ['titre', { property: 'mail', label: 'Contact', type: 'email'}, { property: 'entrepise.nom', label: 'Entreprise' }, 'formations']
+
+      Formation:
+        class: App\Entity\Formation
+        label: 'Formations'          
+        list:
+          fields: ['nomComplet', { property: 'stages', label: 'Nombres de stages' }]
+          title: 'Liste %%entity_label%%'
+
+      User:
+        class: App\Entity\User
+        form: 
+          fields: ['nom', 'prenom', {property: 'email', type: 'email'}, {property: 'password', type: 'password'}]
+          
+        list:
+          fields: ['nom', 'prenom', 'roles']
+      
+      Entreprise:
+        class: App\Entity\Entreprise
+        list:
+          fields: ['nom', 'activite', { property: 'site', label: 'Site Web', type: 'url' }, { property: 'entreprises', label: 'Nombres de stages' }] #Problème de nom
+        
+        form:
+          fields: [{type: 'section', label: 'Informations générales'}, 'nom', 'activite', {type: 'section', label: 'Coordonnées'} 'adresse', { property: 'site', label: 'Site Web', type: 'url' }, {type: 'section', label: 'Vos stages'}, { property: 'entreprises', label: 'Stages' }]
+
+    design:
+      brand_color: '#292b2c'
+
+      menu: 
+        - {label: 'Administration'}
+        - {entity: 'User', default: true, icon: 'user'} 
+        - label: 'Gestion stages'
+          children:
+            - {entity: 'Stage', icon: 'chevron-right'}
+            - {entity: 'Entreprise', icon: 'chevron-right'} 
+            - {entity: 'Formation', icon: 'chevron-right'}
+        - { label: 'Retour accueil', route: 'prostageAccueil', icon: 'reply'}
+
+      #Ca marche mais je ne sais pas comment afficher le contenu
+      #templates:
+            #layout: 'base.html.twig'         
