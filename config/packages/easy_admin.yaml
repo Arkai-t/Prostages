@@ -1,12 +1,14 @@
 easy_admin:
     site_name: 'ProStage'
+    list:
+      max_results: 16
     entities:
       Stage:
         class: App\Entity\Stage
         form:
           fields: ['titre', 'description', { property: 'mail', label: 'Mail de contact', help: 'Ce mail vous servira à recevoir les demandes de stages'}, 'entreprise', formations]
         list:
-          fields: ['titre', { property: 'mail', label: 'Contact', type: 'email'}, { property: 'entrepise.nom', label: 'Entreprise' }, 'formations']
+          fields: ['titre', { property: 'mail', label: 'Contact', type: 'email'}, {property: 'entreprise', label: 'Entreprise'}, 'formations']
 
       Formation:
         class: App\Entity\Formation
