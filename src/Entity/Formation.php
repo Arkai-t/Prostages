@@ -29,7 +29,7 @@ class Formation
     private $nomComplet;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Stage", mappedBy="formations")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Stage", inversedBy="formations")
      */
     private $stages;
 
