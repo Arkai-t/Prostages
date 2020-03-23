@@ -1,0 +1,8 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+    <h1>Vous n'avez pas les droits nécessaires pour accèder à cette page</h1>
+    <br>
+    <p>Veuillez vous <a href="{{path('app_login')}}">connecter ici</a>.</p>
+{% endblock %}
